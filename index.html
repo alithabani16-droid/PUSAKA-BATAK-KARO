@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mejuah-juah! Pusaka Batak Karo - Sangar!</title>
+    
+    <style>
+        /* ======================================================= */
+        /* 1. RESET DAN VARIAEL WARNA (CSS) */
+        /* ======================================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --merah-gorga: #A00000; /* Merah Tua, Judul Kuat */
+            --merah-uisgara: #CC0000; /* Merah Cerah, Aksen */
+            --hitam-karo: #333333; /* Hitam, Teks Utama, Footer */
+            --emas-karo: #FFD700; /* Emas, Garis Aksen, Animasi */
+            --latar-pucat: #fef0f0; /* Latar Belakang Sangat Pucat Merah */
+            --latar-konten: #FFFFFF; /* Latar Belakang Konten Putih */
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: var(--latar-pucat); 
+            color: var(--hitam-karo);
+            line-height: 1.6;
+        }
+
+        /* ======================================================= */
+        /* 2. HEADER & ANIMASI KEYFRAMES */
+        /* ======================================================= */
+        .site-header {
+            background-color: var(--merah-gorga); 
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            border-bottom: 5px solid var(--emas-karo); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        #karo-logo {
+            font-size: 3.8em;
+            text-shadow: 4px 4px 8px #000;
+            letter-spacing: 2px;
+            animation: pulseHeader 2.5s infinite alternate ease-in-out; 
+        }
+
+        @keyframes pulseHeader {
+            0% {
+                transform: scale(1);
+                opacity: 0.9;
+                color: white;
+            }
+            100% {
+                transform: scale(1.06);
+                opacity: 1;
+                color: var(--emas-karo); 
+            }
+        }
+
+        /* ======================================================= */
+        /* 3. NAVIGASI (FLEXBOX) */
+        /* ======================================================= */
+        .main-nav {
+            background-color: var(--merah-uisgara); 
+            padding: 12px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex; 
+            justify-content: center; 
+            gap: 35px;
+        }
+
+        .main-nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease-in-out, transform 0.2s;
+            font-weight: bold;
+            font-size: 1.1em;
+            border-radius: 5px;
+        }
+
+        .main-nav a:hover {
+            background-color: var(--merah-gorga);
+            transform: translateY(-2px);
+        }
+
+        /* ======================================================= */
+        /* 4. KONTEN UTAMA & SECTION STYLE */
+        /* ======================================================= */
+        #main-content-area {
+            padding: 50px 10%;
+            min-height: 70vh;
+        }
+
+        .content-section {
+            background-color: var(--latar-konten);
+            padding: 40px;
+            margin-bottom: 40px;
+            border-left: 8px solid var(--merah-uisgara); 
+            border-radius: 0 15px 15px 0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .content-section h2 {
+            color: var(--merah-gorga);
+            font-size: 2.5em;
+            text-align: center;
+            border-bottom: 4px double var(--emas-karo);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .content-section h3 {
+            color: var(--merah-uisgara);
+            font-size: 1.8em;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            border-left: 5px solid var(--emas-karo);
+            padding-left: 10px;
+        }
+        
+        .merah-tegas {
+            color: var(--merah-uisgara);
+            font-weight: bold;
+        }
+
+        /* Image Wrapper */
+        .media-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+
+        .content-image {
+            max-width: 400px;
+            height: auto;
+            border: 3px solid var(--hitam-karo);
+            border-radius: 8px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* ======================================================= */
+        /* 5. MARGA GRID (CSS GRID) */
+        /* ======================================================= */
+        .marga-grid {
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 25px;
+        }
+
+        .merga-block {
+            border: 2px solid var(--merah-gorga);
+            padding: 20px;
+            border-radius: 10px;
+            background-color: var(--latar-pucat);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .sub-marga-list {
+            list-style: none;
+            column-count: 2; 
+            padding-left: 0;
+            font-size: 0.95em;
+            line-height: 1.4;
+        }
+        
+        /* ======================================================= */
+        /* 6. ANIMASI SCROLL REVEAL */
+        /* ======================================================= */
+        .reveal-item {
+            opacity: 0; 
+            transform: translateY(40px); 
+            transition: opacity 1.2s ease-out, transform 1.2s ease-out; 
+        }
+
+        .reveal-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* ======================================================= */
+        /* 7. FOOTER */
+        /* ======================================================= */
+        .site-footer {
+            background-color: var(--hitam-karo);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.3);
+        }
+        
+        /* Media Query untuk Layout Responsif */
+        @media (max-width: 768px) {
+            .main-nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+            .main-nav a {
+                padding: 8px 15px;
+            }
+            .media-wrapper {
+                flex-direction: column;
+                align-items: center;
+            }
+            .content-image {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <h1 id="karo-logo">🔴 PUSAKA KARO 🔴</h1>
+        <p>MEJUAH-JUAH! Taneh Karo Simalem ! </p>
+    </header>
+
+    <nav class="main-nav">
+        <ul>
+            <li><a href="#" onclick="renderContent('intro')">Beranda</a></li>
+            <li><a href="#" onclick="renderContent('halaman1_filosofi')">Filosofi & Marga</a></li>
+            <li><a href="#" onclick="renderContent('halaman2_adat_seni')">Adat & Ritual</a></li>
+            <li><a href="#" onclick="renderContent('kulcapi_seni_gondang')">Kulcapi & Musik</a></li>
+            <li><a href="#" onclick="renderContent('ulos_perbandingan')">Uis Gara (Perbandingan)</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-content-area">
+        </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2025 Pusaka Batak Karo. Diwariskan dengan Keberanian dan Kebijaksanaan.</p>
+    </footer>
+
+    <script>
+        // =======================================================
+        // DATA KEBETULAN BATAK KARO (DATA MODEL)
+        // =======================================================
+
+        const karoWebsiteData = {
+            marga: {
+                'Ginting': ['Ginting Manik', 'Ginting Suka', 'Ginting Munte', 'Ginting Guru Patih', 'Ginting Seragih', 'Ginting Sinisuka'],
+                'Karo-Karo': ['Karo-Karo Surbakti', 'Karo-Karo Sinuraya', 'Karo-Karo Kaban', 'Karo-Karo Sitepu', 'Karo-Karo Barus', 'Karo-Karo Purba'],
+                'Perangin-angin': ['Perangin-angin Sembiring', 'Perangin-angin Sinulingga', 'Perangin-angin Sukatendel', 'Perangin-angin Keliat', 'Perangin-angin Sebayang', 'Perangin-angin Pinem'],
+                'Sembiring': ['Sembiring Meliala', 'Sembiring Colia', 'Sembiring Brahmana', 'Sembiring Pelawi', 'Sembiring Depari', 'Sembiring Pandia'],
+                'Tarigan': ['Tarigan Sibero', 'Tarigan Tambak', 'Tarigan Gana-Gana', 'Tarigan Jampang', 'Tarigan Tua', 'Tarigan Gerneng'],
+            },
+
+            content: {
+                intro: {
+                    title: "MEJUAH-JUAH! Selamat Datang di Taneh Karo Simalem",
+                    content: `
+                        <div class="media-wrapper reveal-item">
+                            <img src="topi karo.jpg" alt="Ilustrasi Rumah Adat Karo" class="content-image">
+                            <img src="gunung.jpg" alt="Ilustrasi Rumah Adat Karo" class="content-image">
+                        </div>
+                        <p>Selamat datang di pintu gerbang kekayaan budaya Batak Karo. Di sinilah semangat keberanian yang diwakili warna <span class="merah-tegas">Merah</span> berpadu dengan kebijaksanaan <span class="merah-tegas">Hitam</span> dalam setiap sendi kehidupan. Kami mengundang Anda mengenal <span class="merah-tegas">Merga Silima</span> dan kemegahan <span class="merah-tegas">Rumah Adat Karo</span>.</p>
+                        <p>Filosofi kami berpusat pada <span class="merah-tegas">Uis Gara</span>, kain tenun yang memiliki corak dan fungsi yang khas bagi masyarakat Karo.</p>
+                        <p>Pilih menu di atas untuk menyelami filosofi yang masih tegak berdiri hari ini!</p>
+                    `
+                },
+                'halaman1_filosofi': {
+                    title: "🔴 FILOSOFI SANGAR: MERGA SILIMA & BUDAYA KARO",
+                    content: `
+                        <div class="media-wrapper reveal-item">
+                            <img src="gorga merah hitam.jpg" alt="Ilustrasi Gorga dan Ukiran Karo" class="content-image">
+                        </div>
+                        <h3>MERGA SILIMA: IKATAN KEKERABATAN YANG MUTLAK</h3>
+                        <p>Merga Silima adalah pondasi mutlak dari semua sistem sosial dan adat Karo. Lima marga utama ini memastikan harmoni dan saling ketergantungan. Di bawah ini adalah daftar lengkap yang menunjukkan kekuatan jaringan kami:</p>
+                        <div id="marga-detail-container" class="marga-grid"></div>
+                        
+                        <h4>UIS GARA: MANIFESTASI KEBERANIAN KARO</h4>
+                        <p>Uis Gara, atau 'Kain Merah', adalah simbol status dan restu, serta identitas utama Batak Karo. <span class="merah-tegas">Warna Merah</span> yang mendominasi melambangkan Keberanian (<span class="merah-tegas">Kekelengen</span>), dipadukan dengan Hitam (Kekal) dan Putih (Kesucian). Keterangan lebih lanjut tentang perbedaan dengan Ulos dapat dilihat di halaman **"Uis Gara (Perbandingan)"**.</p>
+                        
+                        <h4>KOSMOLOGI TIGA DUNIA</h4>
+                        <p>Pandangan dunia Karo membagi alam semesta menjadi <span class="merah-tegas">Dunia Atas, Dunia Tengah, dan Dunia Bawah</span>. Pandangan ini terintegrasi dalam arsitektur dan ritual, menunjukkan kedalaman hubungan kami dengan alam dan spiritualitas.</p>
+                    `
+                },
+                'halaman2_adat_seni': {
+                    title: "⚫ ADAT ISTIADAT & ARSITEKTUR KEKAL",
+                    content: `
+                        <div class="media-wrapper reveal-item">
+                            <img src="siwaluh jabu.jpg" alt="Ilustrasi Upacara Adat Karo" class="content-image">
+                        </div>
+                        <h3>RUMAH SIWALUH JABU: KEKUATAN KOMUNAL</h3>
+                        <p>Rumah Adang, atau Rumah Siwaluh Jabu ('Rumah Delapan Keluarga'), adalah bukti kejeniusan arsitektur yang dibangun <span class="merah-tegas">tanpa paku sama sekali</span>. Atapnya yang tinggi dan melengkung mencerminkan ketahanan dan kemegahan.</p>
+                        
+                        <h4>RAKUT SITELU: TIGA IKATAN SOSIAL</h4>
+                        <p>Kehidupan sosial Karo diatur oleh <span class="merah-tegas">Rakut Sitelu</span> (Tiga Ikatan) yang mendefinisikan peran dalam adat:</p>
+                        <ul>
+                            <li><span class="merah-tegas">Kalimbubu:</span> Pihak Pemberi Istri (dihormati, pemberi restu).</li>
+                            <li><span class="merah-tegas">Anak Beru:</span> Pihak Penerima Istri (pelayan, pelaksana adat).</li>
+                            <li><span class="merah-tegas">Sembuyak:</span> Saudara Semarga (setara, saling mendukung).</li>
+                        </ul>
+                        <p>Keseimbangan peran ini wajib dipatuhi dalam setiap upacara, menjamin kelangsungan adat yang harmonis.</p>
+
+                    `
+                },
+                'kulcapi_seni_gondang': {
+                    title: "KULCAPI, GONDANG & GURU-GURO ARONEN",
+                    content: `
+                        <div class="media-wrapper reveal-item">
+                            <img src="kulcapi.jpg" alt="Ilustrasi Alat Musik Kulcapi" class="content-image">
+                            <img src="tari karo.jpg" alt="Ilustrasi Tari Guro-Guro Aronen Karo" class="content-image">
+                        </div>
+                        <h3>KULCAPI: JANTUNG MELODI KARO</h3>
+                        <p>Kulcapi adalah alat musik tradisional Karo yang paling khas, sering disebut <span class="merah-tegas">Lute Karo</span>. Alat musik petik ini biasanya memiliki <span class="merah-tegas">dua senar</span> dan dimainkan untuk mengiringi tarian, lagu, dan ritual adat.</p>
+                        <p>Bentuknya yang unik, sering diukir menyerupai kepala manusia atau hewan (seperti kepala kerbau), menjadikannya artefak seni yang berharga. Suaranya yang melankolis dan ritmis menjadi inti dari banyak karya musik Karo.</p>
+                        
+                        <h4>GENDANG GURO-GURO ARONEN: TARI KARO YANG ENERGIK</h4>
+                        <p>Guro-Guro Aronen, yang secara literal berarti 'berjoget sambil bersukaria', adalah tarian khas Karo yang sering disamakan dengan istilah umum 'Tor Tor' di suku Batak lain, namun memiliki gerakan yang sangat berbeda. Tarian ini menekankan keceriaan, spontanitas, dan interaksi antara peserta (marga).
+                        <ul>
+                            <li><span class="merah-tegas">Fungsi Utama:</span> Hiburan, penyambutan tamu, dan pelengkap upacara adat seperti perkawinan (Gondang Perumah) dan kematian.</li>
+                            <li><span class="merah-tegas">Gerakan:</span> Berbeda dari Tor Tor Toba yang cenderung lambat dan khidmat, Guro-Guro Aronen lebih dinamis, cepat, dan ringan.</li>
+                            <li><span class="merah-tegas">Ritual:</span> Penari sering menari hingga mencapai kondisi <span class="merah-tegas">Ngerana (Trance)</span> saat diiringi musik yang intens, menunjukkan koneksi spiritual yang mendalam.</li>
+                        </ul>
+                        
+                        <h4>ORCHESTRA GONDANG KARO</h4>
+                        <p>Ansambel musik (Gondang) yang mengiringi Guro-Guro Aronen memiliki ciri khas <span class="merah-tegas">cepat, riang, dan ritmis</span>. Instrumen utamanya adalah:
+                        <ul>
+                            <li><span class="merah-tegas">Kulcapi:</span> Melodi utama (petikan).</li>
+                            <li><span class="merah-tegas">Gendang Sarune:</span> Klarinet tradisional (melodi tiup).</li>
+                            <li><span class="merah-tegas">Gendang Indung:</span> Drum utama (ritme berat).</li>
+                            <li><span class="merah-tegas">Gendang Anak:</span> Drum kecil (penjaga tempo).</li>
+                        </ul>
+                    `
+                },
+                'ulos_perbandingan': {
+                    title: "🔶 ULOS: PERBANDINGAN DAN PENGHARGAAN PUSAKA TENUN",
+                    content: `
+                        <div 
+                        <div class="media-wrapper reveal-item">
+                            <img src="batak toba 2.jpg" alt="KAIN ULOS BATAK TOBA" class="content-image"> 
+                            <img src="uis nipes sutra 2.jpg" alt="KAIN ULOS BATAK KARO" class="content-image">
+                            <img src="uis gara.jpg" alt="UIS GARA (PENUTUP KEPALA)" class="content-image">                        
+                             </div>
+                        </div>
+                        <h3>UIS GARA VS ULOS: MENGHINDARI KESALAHPAHAMAN</h3>
+                        <p>Meskipun Batak Karo dan Batak Toba merupakan bagian dari rumpun Batak, pusaka tenun mereka memiliki identitas, makna, dan tata cara penggunaan yang berbeda, dan keduanya sama-sama berharga.</p>
+                        
+                        <h4>APA ITU ULOS?</h4>
+                        <p>Ulos adalah kain tenun tradisional khas Batak Toba dan sub-etnis Batak lainnya (seperti Simalungun, Mandailing, Pakpak, Angkola). Ulos memiliki fungsi sangat vital dalam upacara adat, meliputi kelahiran hingga kematian.</p>
+                        <ul>
+                            <li><span class="merah-tegas">Fungsi Ulos:</span> Simbol cinta, restu, dan perlindungan (diberikan kepada penerima untuk menghangatkan tubuh/jiwa).</li>
+                            <li><span class="merah-tegas">Jenis:</span> Terdapat banyak jenis Ulos dengan fungsi spesifik, seperti Ulos Ragidup, Ulos Sadum, Ulos Sibolang.</li>
+                            <li><span class="merah-tegas">Warna Dominan:</span> Umumnya didominasi warna hitam, merah, dan putih, dengan hiasan benang emas/perak yang khas.</li>
+                        </ul>
+
+                        <h4>POIN UTAMA PERBEDAAN DENGAN UIS GARA KARO</h4>
+                        <p>Perbedaan utamanya terletak pada <span class="merah-tegas">Corak</span>, <span class="merah-tegas">Simbolisme</span>, dan <span class="merah-tegas">Kontekstualitas Adat</span>. Uis Gara memiliki motif khas Karo (misalnya Beka Buluh atau Jongkit) dan dipakai dalam ritual Karo, sedangkan Ulos (walaupun fungsinya mirip) dipakai dalam ritual Toba dan sub-etnis lainnya dengan aturan yang berbeda.</p>
+                        <p>Kami menghargai semua warisan Batak, namun situs ini berfokus pada keunikan dan keindahan Pusaka Batak Karo.</p>
+                    `
+                }
+            }
+        };
+
+        // =======================================================
+        // FUNGSI UTAMA RENDERING (ASYNC)
+        // =======================================================
+
+        async function renderContent(pageKey) {
+            const mainContentArea = document.getElementById('main-content-area');
+            
+            // Tampilkan loading screen
+            mainContentArea.innerHTML = `<section class="content-section" style="text-align:center;"><h2>Memuat Pusaka Karo...</h2></section>`;
+            
+            await new Promise(resolve => setTimeout(resolve, 500)); 
+
+            const data = karoWebsiteData.content[pageKey];
+            if (!data) {
+                mainContentArea.innerHTML = `<section class="content-section reveal-item"><h2>[404] Data Pusaka Hilang!</h2></section>`;
+                return;
+            }
+
+            let renderedHtml = `<section class="content-section reveal-item">`;
+            renderedHtml += `<h2>${data.title}</h2>`;
+            renderedHtml += data.content; 
+            renderedHtml += `</section>`;
+            
+            mainContentArea.innerHTML = renderedHtml;
+
+            // Hanya render Marga jika berada di halaman Filosofi
+            if (pageKey === 'halaman1_filosofi') {
+                renderMargaData();
+            }
+
+            initializeScrollReveal();
+        }
+
+        // =======================================================
+        // FUNGSI RENDERING KHUSUS
+        // =======================================================
+
+        function renderMargaData() {
+            const margaDetailContainer = document.getElementById('marga-detail-container');
+            if (!margaDetailContainer) return;
+
+            let margaHtml = '';
+            for (const [merga, subMargaArray] of Object.entries(karoWebsiteData.marga)) {
+                margaHtml += `
+                    <div class="merga-block reveal-item">
+                        <h3>Merga ${merga}</h3>
+                        <p>Anak Marga / Sub-marga:</p>
+                        <ul class="sub-marga-list">
+                            ${subMargaArray.map(sub => `<li>${sub}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+            margaDetailContainer.innerHTML = margaHtml;
+            initializeScrollReveal(); 
+        }
+
+        // =======================================================
+        // FUNGSI ANIMASI (Intersection Observer)
+        // =======================================================
+
+        function initializeScrollReveal() {
+            const revealElements = document.querySelectorAll('.reveal-item:not(.visible)'); 
+            const options = { threshold: 0.1 };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, options);
+
+            revealElements.forEach(element => {
+                observer.observe(element);
+            });
+        }
+        
+        // =======================================================
+        // INITIALIZATION PADA SAAT DOM SIAP
+        // =======================================================
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderContent('intro'); 
+            console.log("Website Batak Karo Siap! Mejuah-juah!");
+        });
+    </script>
+</body>
+</html>
