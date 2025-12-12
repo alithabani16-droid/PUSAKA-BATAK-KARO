@@ -1,0 +1,255 @@
+/* 1. RESET DAN VARIAEL WARNA */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --merah-gorga: #A00000; /* Merah Tua, untuk Judul, Border Kuat */
+    --merah-uisgara: #CC0000; /* Merah Cerah, untuk Aksen, Link */
+    --hitam-karo: #333333; /* Hitam, untuk Teks Utama, Footer */
+    --emas-karo: #FFD700; /* Emas, untuk Garis Aksen, Animasi */
+    --latar-pucat: #fef0f0; /* Latar Belakang Sangat Pucat Merah */
+    --latar-konten: #FFFFFF; /* Latar Belakang Konten Putih */
+}
+
+body {
+    font-family: 'Times New Roman', serif;
+    background-color: var(--latar-pucat); 
+    color: var(--hitam-karo);
+    line-height: 1.6;
+}
+
+/* 2. HEADER & ANIMASI KEYFRAMES */
+.site-header {
+    background-color: var(--merah-gorga); 
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+    border-bottom: 5px solid var(--emas-karo); 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+#karo-logo {
+    font-size: 3.8em;
+    text-shadow: 4px 4px 8px #000;
+    letter-spacing: 2px;
+    animation: pulseHeader 2.5s infinite alternate ease-in-out; 
+}
+
+@keyframes pulseHeader {
+    0% {
+        transform: scale(1);
+        opacity: 0.9;
+        color: white;
+    }
+    100% {
+        transform: scale(1.06);
+        opacity: 1;
+        color: var(--emas-karo); 
+    }
+}
+
+/* 3. NAVIGASI (FORMAT: FLEXBOX) */
+.main-nav {
+    background-color: var(--merah-uisgara); 
+    padding: 12px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex; /* <-- FORMAT BERBEDA 1: FLEXBOX */
+    justify-content: center; 
+    gap: 35px;
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease-in-out, transform 0.2s;
+    font-weight: bold;
+    font-size: 1.1em;
+    border-radius: 5px;
+}
+
+.main-nav a:hover {
+    background-color: var(--merah-gorga);
+    transform: translateY(-2px);
+}
+
+/* 4. KONTEN UTAMA & SECTION STYLE */
+#main-content-area {
+    padding: 50px 10%;
+    min-height: 70vh;
+}
+
+.content-section {
+    background-color: var(--latar-konten);
+    padding: 40px;
+    margin-bottom: 40px;
+    border-left: 8px solid var(--merah-uisgara); /* Garis Merah Penekanan */
+    border-radius: 0 15px 15px 0;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-section h2 {
+    color: var(--merah-gorga);
+    font-size: 2.5em;
+    text-align: center;
+    border-bottom: 4px double var(--emas-karo);
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.content-section h3 {
+    color: var(--merah-uisgara);
+    font-size: 1.8em;
+    margin-top: 35px;
+    margin-bottom: 15px;
+    border-left: 5px solid var(--emas-karo);
+    padding-left: 10px;
+}
+
+.content-section h4 {
+    color: var(--hitam-karo);
+    font-size: 1.4em;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+.content-section p {
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+.content-section ul {
+    margin: 15px 0 25px 30px;
+    list-style-type: square; /* Atau none jika ingin custom */
+    color: var(--merah-gorga);
+}
+
+.content-section ul li {
+    margin-bottom: 8px;
+    color: var(--hitam-karo);
+}
+
+.merah-tegas {
+    color: var(--merah-uisgara);
+    font-weight: bold;
+}
+
+/* 5. LAYOUT MARGA & GALERI (FORMAT: CSS GRID) */
+.marga-grid {
+    display: grid; /* <-- FORMAT BERBEDA 2: CSS GRID */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 25px;
+}
+
+.merga-block {
+    border: 2px solid var(--merah-gorga);
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--latar-pucat);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.merga-block h3 {
+    text-align: center;
+    color: var(--merah-gorga);
+    border-bottom: 2px dashed var(--emas-karo);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+.sub-marga-list {
+    list-style: none;
+    column-count: 2; /* Daftar sub-marga lebih ringkas */
+    padding-left: 0;
+    font-size: 0.95em;
+    line-height: 1.4;
+}
+
+.sub-marga-list li {
+    margin-bottom: 3px;
+    padding-left: 10px;
+    position: relative;
+}
+
+.sub-marga-list li::before {
+    content: "•"; /* Custom bullet */
+    color: var(--merah-uisgara);
+    position: absolute;
+    left: 0;
+}
+
+
+.gallery-grid {
+    display: grid; /* <-- FORMAT BERBEDA 2: CSS GRID */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.gallery-item {
+    border: 2px solid var(--merah-gorga);
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    background-color: var(--latar-konten);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px) scale(1.02); 
+    box-shadow: 0 10px 25px rgba(var(--merah-uisgara), 0.5); /* Efek bayangan merah */
+}
+
+.gallery-image {
+    width: 100%;
+    height: 200px; 
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-item h3 {
+    font-size: 1.2em;
+    color: var(--merah-gorga);
+    margin: 15px 0 5px;
+    padding: 0 10px;
+}
+
+.gallery-item p {
+    font-size: 0.9em;
+    color: #666;
+    padding: 0 10px 15px;
+}
+
+/* 6. ANIMASI PENJELASAN (SCROLL REVEAL) */
+.reveal-item {
+    opacity: 0; 
+    transform: translateY(40px); /* Muncul dari bawah */
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out; 
+}
+
+.reveal-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 7. FOOTER */
+.site-footer {
+    background-color: var(--hitam-karo);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 50px;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.3);
+}
